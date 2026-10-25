@@ -8,7 +8,7 @@ Repositorio: https://github.com/LinayYMP/Pok-DexExplorer
 
 ## Arquitectura y árbol de carpetas
 
-La guía deja la estructura a decisión del equipo con una sola regla: **las llamadas a la API no deben quedar mezcladas con los estilos y el JSX. Por eso el código se separó en capas:
+La guía deja la estructura a decisión del equipo con una sola regla: **las llamadas a la API no deben quedar mezcladas con los estilos y el JSX**. Por eso el código se separó en capas:
 
 ```
                      ┌──────────────────────────┐
@@ -52,7 +52,7 @@ pokedex-explorer/
 ├── .gitignore
 ├── assets/                      # Iconos y splash de la plantilla
 ├── screenshots/
-│   └── web-preview/             # 13 capturas reales de la versión web (ver sección 19)
+│   └── web-preview/             # 13 capturas reales de la versión web
 ├── src/
 │   ├── components/
 │   │   ├── AppButton.js
@@ -83,6 +83,8 @@ pokedex-explorer/
 
 ## Responsabilidad de cada archivo
 
+| Archivo | Responsabilidad |
+| --- | --- |
 | `App.js` | Envuelve la app en `SafeAreaProvider`/`SafeAreaView`. Guarda en `selection` qué Pokémon está abierto: `null` muestra la lista; `{ id, pokemon }` muestra la ficha encima de la lista. Maneja el botón físico "atrás" de Android con `BackHandler`. |
 | `src/services/pokemonApi.js` | **Única capa de red.** `requestJson()` hace `fetch` con `async/await`, revisa `response.ok` antes de `response.json()`, cancela a los 15 s y clasifica los errores (`NOT_FOUND`, `NETWORK`, `SERVER`). Expone `fetchPokemonPage(offset, limit)` y `fetchPokemonDetail(nombreOId)`. |
 | `src/utils/pokemonUtils.js` | Funciones puras: extraer el id de la URL, construir la URL de la imagen, formatear `#025`, poner mayúscula inicial, normalizar la búsqueda, convertir altura/peso, calcular el porcentaje de las barras, traducir tipos y estadísticas, mapear respuestas de la API y unir páginas sin duplicados. |
